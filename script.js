@@ -14,7 +14,7 @@ window.addEventListener('load', function () {
             this.enemies = [];
             this.enemyInterval = 1500;
             this.enemyTimer = 0;
-
+            this.enemyTypes = ['worm', 'ghost'];
         }
         update(deltaTime) {
             this.enemies = this.enemies.filter(object => !object.markedForDeletion);
@@ -30,7 +30,9 @@ window.addEventListener('load', function () {
             this.enemies.forEach(object => object.draw(this.ctx));
         }
         #addNewEnemy() {
-            this.enemies.push(new Worm(this));
+            const randomEnemy = this.enemyTypes[Math.floor(Math.random() * this.enemyTypes.length)];
+            if (randomEnemy == 'worm') this.enemies.push(new Worm(this));
+            else if (randomEnemy == 'ghost') this.enemies.push(new Ghost(this));
             //  Draw enemies lower in front of higher enemies
             this.enemies.sort(function (a, b) {
                 return a.y - b.y;
@@ -66,10 +68,26 @@ window.addEventListener('load', function () {
             this.width = this.spriteWidth / 2;
             this.height = this.spriteHeight / 2;
             this.x = this.game.width;
-            this.y = Math.random() * this.game.height;
+            this.y = this.game.height - this.height;
             this.markedForDeletion = false;
             this.image = worm; //  Id name
             this.vx = Math.random() * 0.1 + 0.1;
+            console.log(this.image);
+        }
+    }
+
+    class Ghost extends Enemy {
+        constructor(game) {
+            super(game);
+            this.spriteWidth = 261;
+            this.spriteHeight = 209;
+            this.width = this.spriteWidth / 2;
+            this.height = this.spriteHeight / 2;
+            this.x = this.game.width;
+            this.y = Math.random() * this.game.height * 0.8;
+            this.markedForDeletion = false;
+            this.image = ghost; //  Id name
+            this.vx = Math.random() * 0.2 + 0.1;
             console.log(this.image);
         }
     }
