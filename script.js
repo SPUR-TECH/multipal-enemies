@@ -12,7 +12,7 @@ window.addEventListener('load', function () {
             this.width = width;
             this.height = height;
             this.enemies = [];
-            this.enemyInterval = 1500;
+            this.enemyInterval = 3000;
             this.enemyTimer = 0;
             this.enemyTypes = ['worm', 'ghost'];
         }
@@ -84,11 +84,17 @@ window.addEventListener('load', function () {
             this.width = this.spriteWidth / 2;
             this.height = this.spriteHeight / 2;
             this.x = this.game.width;
-            this.y = Math.random() * this.game.height * 0.8;
+            this.y = Math.random() * this.game.height * 0.6;
             this.markedForDeletion = false;
             this.image = ghost; //  Id name
             this.vx = Math.random() * 0.2 + 0.1;
             console.log(this.image);
+        }
+        draw() {
+            ctx.save();
+            ctx.globalAlpha = 0.5;
+            super.draw(ctx);
+            ctx.restore();
         }
     }
 
