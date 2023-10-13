@@ -4,3 +4,36 @@ window.addEventListener('load', function () {
     canvas.width = 1500;
     canvas.height = 600;
 });
+
+class Game {
+    constructor() {
+        this.enemies = [];
+    }
+    update() {
+
+    }
+    draw() {
+
+    }
+    #addNewEnemy() {
+
+    }
+}
+
+class Enemy {
+    constructor() {
+
+    }
+    update() {
+
+    }
+    draw() {
+
+    }
+}
+
+function animate() {
+
+}
+
+animate();
