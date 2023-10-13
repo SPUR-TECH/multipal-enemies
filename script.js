@@ -88,7 +88,14 @@ window.addEventListener('load', function () {
             this.markedForDeletion = false;
             this.image = ghost; //  Id name
             this.vx = Math.random() * 0.2 + 0.1;
+            this.angle = 0;
+
             console.log(this.image);
+        }
+        update(deltaTime) {
+            super.update(deltaTime)
+            this.y += Math.sin(this.angle) * 1;
+            this.angle += 0.04;
         }
         draw() {
             ctx.save();
