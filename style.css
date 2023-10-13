@@ -22,7 +22,8 @@ body {
 
 #worm,
 #ghost,
-#spider {
+#spider,
+#test {
     display: none;
 }
 
